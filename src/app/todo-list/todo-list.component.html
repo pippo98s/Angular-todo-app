@@ -1,7 +1,9 @@
 <ng-template [ngIf]="list.length > 0" [ngIfElse]="none">
   <ul>
     <li *ngFor="let item of list">
-      <p>ID {{item.id}} - {{item.title}} - {{item.date}}</p>
+      <a routerLink="/modify/{{item.id}}">
+        ID {{item.id}} - {{item.title}} - {{item.date}}
+      </a>
     </li>
   </ul>
 </ng-template>

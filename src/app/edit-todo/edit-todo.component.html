@@ -1,0 +1,14 @@
+<form #editItem="ngForm" (ngSubmit)="onSubmit(editItem.value)">
+  <label for="name">title</label>
+  <input 
+    type="text"
+    name="title"
+    ngModel
+    required
+    minlength="4"
+  >
+  <input class="d-none" type="text" name="date" ngModel>
+  <button type="submit" [disabled]="editItem.invalid">Modifica</button>
+</form>
+
+<button (click)="goBack()">go back</button>
