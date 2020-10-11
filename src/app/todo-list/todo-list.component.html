@@ -1,1 +1,12 @@
-<p>todo-list works!</p>
+<ng-template [ngIf]="list.length > 0" [ngIfElse]="none">
+  <ul>
+    <li *ngFor="let item of list">
+      <p>ID {{item.id}} - {{item.title}} - {{item.date}}</p>
+    </li>
+  </ul>
+</ng-template>
+
+<ng-template #none>
+  <p>lista vuota</p>
+  <a routerLink="/add">Aggiungi</a>
+</ng-template>
