@@ -8,7 +8,13 @@
     minlength="4"
   >
   <input class="d-none" type="text" name="date" ngModel>
-  <button type="submit" [disabled]="editItem.invalid">Modifica</button>
+  <button 
+    type="submit"
+    [disabled]="editItem.invalid"
+    mat-raised-button
+    color="primary"
+  >Modifica</button>
 </form>
 
-<button (click)="goBack()">go back</button>
+<button mat-button color="accent" (click)="goBack()">go back</button>
+
