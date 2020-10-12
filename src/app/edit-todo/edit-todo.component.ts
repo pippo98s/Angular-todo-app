@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Router } from '@angular/router';
 import { Location } from '@angular/common';
+import { FormControl, Validators } from '@angular/forms';
+
 import { TodoList } from '../todo-list';
 
 @Component({
@@ -13,6 +15,10 @@ export class EditTodoComponent implements OnInit {
 
   idPost;
   idArray;
+  titlePost;
+  editFormControl = new FormControl('', [
+    Validators.required
+  ]);
   constructor(
     private route: ActivatedRoute,
     private router: Router,
@@ -24,12 +30,13 @@ export class EditTodoComponent implements OnInit {
       // prendo l'id dalla rotta e lo converto in numbero con l'operatore +
       this.idPost = +this.route.snapshot.paramMap.get('id');
       this.idArray = this.idPost - 1;
+      this.titlePost = TodoList[this.idArray].title;
     }
   }
 
   onSubmit(data){
     console.log(data);
-    this.editItem(TodoList[this.idArray] , data.title );
+    this.editItem(TodoList[this.idArray] , data );
     this.router.navigate(['']) // ritorno alla rotta principale
   }
 

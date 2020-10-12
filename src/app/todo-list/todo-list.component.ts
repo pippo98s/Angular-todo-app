@@ -10,6 +10,7 @@ import { TodoList } from '../todo-list';
 export class TodoListComponent implements OnInit {
 
   list: TodoItem[] = TodoList;
+  displayedColumns: string[] = ['id', 'title', 'date' , 'options'];
 
   constructor() { }
 

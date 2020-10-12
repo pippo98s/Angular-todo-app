@@ -1,7 +1,17 @@
-<form #newItem="ngForm" (ngSubmit)="onSubmit(newItem.value)">
-  <input class="d-none" type="number" name="id" ngModel required>
-  <label for="name">title</label>
-  <input type="text" name="title" ngModel required>
-  <input class="d-none" type="text" name="date" ngModel required>
-  <button type="submit">Aggiungi</button>
-</form>
+<section id="new-task">
+  <form [formGroup]="addFormControl" #newItem="ngForm" (ngSubmit)="onSubmit(newItem.value)">
+    <mat-form-field>
+      <mat-label>Title</mat-label>
+      <input matInput name="title" ngModel [formControl]="addFormControl">
+      <mat-error *ngIf="addFormControl.hasError('required')">
+        il titolo è <strong>obbligatorio</strong>
+      </mat-error>
+    </mat-form-field>
+    <button
+      mat-raised-button
+      color="primary"
+      type="submit"
+      [disabled]="addFormControl.invalid"
+    >Aggiungi</button>
+  </form>
+</section>

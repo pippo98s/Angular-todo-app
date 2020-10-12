@@ -1,0 +1,20 @@
+#todo-list{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: calc(100vh - 48px);
+  table {
+    width: 90%;
+    margin: auto;
+    margin-top: 40px;
+  }
+
+  #empty-list{
+    width: 50%;
+    margin: auto;
+    padding: 10px;
+    background-color: rgb(231, 241, 241);
+    border-radius: 10px;
+    text-align: center;
+  }
+}

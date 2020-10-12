@@ -1,20 +1,25 @@
-<form #editItem="ngForm" (ngSubmit)="onSubmit(editItem.value)">
-  <label for="name">title</label>
-  <input 
-    type="text"
-    name="title"
-    ngModel
-    required
-    minlength="4"
-  >
-  <input class="d-none" type="text" name="date" ngModel>
-  <button 
-    type="submit"
-    [disabled]="editItem.invalid"
-    mat-raised-button
-    color="primary"
-  >Modifica</button>
-</form>
-
-<button mat-button color="accent" (click)="goBack()">go back</button>
-
+<section id="edit-task">
+  <form [formGroup]="editFormControl" #editItem="ngForm" (ngSubmit)="onSubmit(editItem.value)">
+    <mat-form-field>
+      <mat-label>Title</mat-label>
+      <input matInput name="title" [(ngModel)]="titlePost" [formControl]="editFormControl">
+      <button
+        mat-button
+        *ngIf="titlePost"
+        matSuffix
+        mat-icon-button
+        aria-label="Clear"
+        (click)="titlePost=''"
+      >
+        <mat-icon>close</mat-icon>
+      </button>
+      <mat-error *ngIf="editFormControl.hasError('required')">
+        il titolo è <strong>obbligatorio</strong>
+      </mat-error>
+    </mat-form-field>
+    <button type="submit" [disabled]="editFormControl.invalid" mat-raised-button color="primary">
+      Modifica
+    </button>
+  </form>
+  <button mat-button color="accent" (click)="goBack()">go back</button>
+</section>

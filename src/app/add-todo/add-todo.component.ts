@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { FormControl, Validators } from '@angular/forms';
 import { TodoItem } from '../todo-item';
 import { TodoList } from '../todo-list';
 
@@ -11,6 +12,10 @@ import { TodoList } from '../todo-list';
 export class AddTodoComponent implements OnInit {
 
   newItem: TodoItem;
+
+  addFormControl = new FormControl('', [
+    Validators.required
+  ]);
   constructor(private router: Router) {
    }
 
@@ -20,7 +25,7 @@ export class AddTodoComponent implements OnInit {
   onSubmit(data) {
     this.newItem = {
       id: TodoList.length + 1, // ottengo l'id dalla lunghezza della lista 
-      title: data.title,
+      title: data,
       date: this.getDate()
     }
     TodoList.push(this.newItem); // inserisco il nuovo elemento in lista

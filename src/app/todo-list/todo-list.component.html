@@ -1,14 +1,43 @@
-<ng-template [ngIf]="list.length > 0" [ngIfElse]="none">
-  <ul>
-    <li *ngFor="let item of list">
-      <a routerLink="/modify/{{item.id}}">
-        ID {{item.id}} - {{item.title}} - {{item.date}}
-      </a>
-    </li>
-  </ul>
-</ng-template>
+<section id="todo-list">
+  <ng-template [ngIf]="list.length > 0" [ngIfElse]="none">
 
-<ng-template #none>
-  <p>lista vuota</p>
-  <a routerLink="/add">Aggiungi</a>
-</ng-template>
+    <table mat-table [dataSource]="list" class="mat-elevation-z8">
+
+      <!-- id Column -->
+      <ng-container matColumnDef="id">
+        <th mat-header-cell *matHeaderCellDef> Id </th>
+        <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+      </ng-container>
+
+      <!-- title Column -->
+      <ng-container matColumnDef="title">
+        <th mat-header-cell *matHeaderCellDef> Tile </th>
+        <td mat-cell *matCellDef="let element"> {{element.title}} </td>
+      </ng-container>
+
+      <!-- date Column -->
+      <ng-container matColumnDef="date">
+        <th mat-header-cell *matHeaderCellDef> Data creazione </th>
+        <td mat-cell *matCellDef="let element">{{element.date}}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="options">
+        <th mat-header-cell *matHeaderCellDef> Opzioni </th>
+        <td mat-cell *matCellDef="let element">
+          <a mat-raised-button color="primary" routerLink="/modify/{{element.id}}">Modifica</a>
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+  </ng-template>
+
+  <ng-template #none>
+    <div id="empty-list">
+      <p>lista vuota</p>
+      <a routerLink="/add" mat-flat-button color="accent">Aggiungi task</a>
+    </div>
+    
+  </ng-template>
+</section>
