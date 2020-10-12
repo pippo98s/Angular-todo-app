@@ -14,6 +14,7 @@ import { TodoListComponent } from './todo-list/todo-list.component';
 import { AddTodoComponent } from './add-todo/add-todo.component';
 import { EditTodoComponent } from './edit-todo/edit-todo.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 const MaterialComponents = [
   MatButtonModule,
@@ -28,7 +29,8 @@ const MaterialComponents = [
     AppComponent,
     TodoListComponent,
     AddTodoComponent,
-    EditTodoComponent
+    EditTodoComponent,
+    PageNotFoundComponent
   ],
   imports: [
     BrowserModule,

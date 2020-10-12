@@ -24,13 +24,16 @@ export class EditTodoComponent implements OnInit {
     private router: Router,
     private location: Location
   ) { }
-
+    
   ngOnInit(): void {
+    // prendo l'id dalla rotta e lo converto in numero con l'operatore +
+    this.idPost = +this.route.snapshot.paramMap.get('id');
+    // condizione che evita di entrare in pagina se la lista è vuota
     if (TodoList.length > 0){
-      // prendo l'id dalla rotta e lo converto in numbero con l'operatore +
-      this.idPost = +this.route.snapshot.paramMap.get('id');
       this.idArray = this.idPost - 1;
       this.titlePost = TodoList[this.idArray].title;
+    } else {
+      this.router.navigate(['404'])
     }
   }
 
